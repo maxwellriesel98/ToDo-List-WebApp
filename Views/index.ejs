@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title><% if(locals.workTasks){ %>
+        My Work Tasks
+    <%} else {%>
+        My Home Tasks<% } %>
+    </title>
+</head>
+
+<body>
+    <h1>To Do list: <% if(locals.workTasks){ %>
+        Work 
+    <%} else {%>
+        Home <% } %>
+    </h1>    
+
+    <form action="">
+        <% if(locals.workTasks){ %>
+
+            <% for(var i=0; i<workTasks.length; i++){ %>
+
+                <input type="checkbox" name="workTask"+<%= i.toString()  %> id=<%= workTasks[i] %> value=<%= i %>/>
+                <label for="workTask"+<%= i.toString()  %>><%= workTasks[i] %></label>
+                <br>
+        <%} }else {%>
+
+            <% for(var i=0; i<homeTasks.length; i++){ %>
+
+                <input class="strikethrough" type="checkbox" name="homeTask"+<%= i.toString()  %> id=<%= homeTasks[i] %> value=<<%= i %>>/>
+                <label for="homeTask"+<%= i.toString()  %> class="strikethrough"><%= homeTasks[i] %></label>
+                <br>
+            <% }} %>
+    </form>
+
+    <form action="/" method="GET">
+        <input type="submit" value="Go Back">
+    </form>
+</body>
+</html>
