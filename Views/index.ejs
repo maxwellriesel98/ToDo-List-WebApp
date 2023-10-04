@@ -13,32 +13,44 @@
 </head>
 
 <body>
-    <h1>To Do list: <% if(locals.workTasks){ %>
-        Work 
-    <%} else {%>
-        Home <% } %>
-    </h1>    
 
-    <form action="">
-        <% if(locals.workTasks){ %>
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-3 fw-bold text-body-emphasis">To Do list: <% if(locals.workTasks){ %>
+            Work 
+        <%} else {%>
+            Home <% } %>
+         </h1>
+        <div class="col-lg-6 mx-auto">
+          
+            <form action="">
+                <% if(locals.workTasks){ %>
+        
+                    <% for(var i=0; i<workTasks.length; i++){ %>
+        
+                        <input type="checkbox" name="workTask"+<%= i.toString()  %> id=<%= workTasks[i] %> value=<%= i %>/>
+                        <label for="workTask"+<%= i.toString()  %> class="fs-2"><%= workTasks[i] %></label>
+                        <br>
+                <%} }else {%>
+        
+                    <% for(var i=0; i<homeTasks.length; i++){ %>
+        
+                        <input  type="checkbox" name="homeTask"+<%= i.toString()  %> id=<%= homeTasks[i] %> value=<<%= i %>/>
+                        <label for="homeTask"+<%= i.toString()  %> class="fs-2"><%= homeTasks[i] %></label>
+                        <br>
+                    <% }} %>
+            </form>
+        
+            <form action="/" method="GET">
+                <input class="btn btn-primary btn-lg px-4 gap-3"  type="submit" value="Go Back">
+            </form>
+            
+        </div>
+      </div>
 
-            <% for(var i=0; i<workTasks.length; i++){ %>
 
-                <input type="checkbox" name="workTask"+<%= i.toString()  %> id=<%= workTasks[i] %> value=<%= i %>/>
-                <label for="workTask"+<%= i.toString()  %>><%= workTasks[i] %></label>
-                <br>
-        <%} }else {%>
 
-            <% for(var i=0; i<homeTasks.length; i++){ %>
+       
 
-                <input class="strikethrough" type="checkbox" name="homeTask"+<%= i.toString()  %> id=<%= homeTasks[i] %> value=<<%= i %>>/>
-                <label for="homeTask"+<%= i.toString()  %> class="strikethrough"><%= homeTasks[i] %></label>
-                <br>
-            <% }} %>
-    </form>
-
-    <form action="/" method="GET">
-        <input type="submit" value="Go Back">
-    </form>
+    
 </body>
 </html>

@@ -9,25 +9,53 @@
 </head>
 <body>
 
-    <h1>ToDo List</h1>
 
-    <h2>Add your Items here 👇</h2>
-    <form action="/submit" method="POST">
-        <select name="location" class="form-select">
-            <option value="Work" data-display="Select">Work</option>
-            <option value="Home">Home</option>
-        </select>
-        <input type="text" name="task" placeholder="Enter your task">
-        <input type="submit" value="Submit Task">
-    </form>
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-4 fw-bold text-body-emphasis">ToDo List</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">Keep track of all of your tasks!</p>
+          <div class="d-grid gap-5 d-sm-flex justify-content-sm-center">
+            <form action="/home" method="POST">
+                <input  type="submit" value="View Home List" class="btn btn-primary btn-lg px-4 gap-3">
+            </form>
 
-    <form action="/home" method="POST">
-        <input type="submit" value="View Home List">
-    </form>
+            <form action="/work" method="POST">
+                <input type="submit" value="View Work List" class="btn btn-success btn-lg px-4">
+            </form>
+          </div>
+          
+      </div>
 
-    <form action="/work" method="POST">
-        <input type="submit" value="View Work List">
-    </form>
+
+      <div class="modal modal-sheet position-static d-block  p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content rounded-3 shadow">
+            <div class="modal-body p-4 text-center">
+                <h2 class="mt-4 display-6 fw-bold text-body-emphasis">Add your Items here 👇</h2>
+            </div>
+            <div class=" d-grid gap-1" >
+
+                <form action="/submit" method="POST" class="mb-3">
+                    <select name="location" class="w-50 ms-5 form-select"><p>Task Location</p>
+                        <option value="Work" data-display="Select">Work</option>
+                        <option value="Home">Home</option>
+                    </select>
+
+                    <input type="text" name="task" placeholder="Enter your task">
+                    <input type="submit" value="Submit Task" class="btn btn-dark btn-lg px-4 gap-3">
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    
+    
+
+    
+
+   
 
 </body>
 </html>
